@@ -148,21 +148,21 @@
 <p>(Currently not fully documented, see the <a href="./keymap.html">keymappings</a> list for more.)</p>
 <p>See <a href="https://github.com/helix-editor/helix/blob/master/runtime/tutor">tutor</a> (accessible via <code>hx --tutor</code> or <code>:tutor</code>) for a vimtutor-like introduction.</p>
 <h2 id="registers"><a class="header" href="#registers">Registers</a></h2>
-<p>Vim-like registers can be used to yank and store text to be pasted later. Usage is similar, with <code>&quot;</code> being used to select a register:</p>
+<p>Vim-like registers can be used to yank and store text to be pasted later. Usage is similar, with <code>"</code> being used to select a register:</p>
 <ul>
-<li><code>&quot;ay</code> - Yank the current selection to register <code>a</code>.</li>
-<li><code>&quot;op</code> - Paste the text in register <code>o</code> after the selection.</li>
+<li><code>"ay</code> - Yank the current selection to register <code>a</code>.</li>
+<li><code>"op</code> - Paste the text in register <code>o</code> after the selection.</li>
 </ul>
 <p>If there is a selected register before invoking a change or delete command, the selection will be stored in the register and the action will be carried out:</p>
 <ul>
-<li><code>&quot;hc</code> - Store the selection in register <code>h</code> and then change it (delete and enter insert mode).</li>
-<li><code>&quot;md</code> - Store the selection in register <code>m</code> and delete it.</li>
+<li><code>"hc</code> - Store the selection in register <code>h</code> and then change it (delete and enter insert mode).</li>
+<li><code>"md</code> - Store the selection in register <code>m</code> and delete it.</li>
 </ul>
 <h3 id="special-registers"><a class="header" href="#special-registers">Special Registers</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Register character</th><th>Contains</th></tr></thead><tbody>
 <tr><td><code>/</code></td><td>Last search</td></tr>
 <tr><td><code>:</code></td><td>Last executed command</td></tr>
-<tr><td><code>&quot;</code></td><td>Last yanked text</td></tr>
+<tr><td><code>"</code></td><td>Last yanked text</td></tr>
 <tr><td><code>_</code></td><td>Black hole</td></tr>
 </tbody></table>
 </div>
@@ -213,12 +213,12 @@ a more intuitive tree format:</p>
       │                │
 ┌─────▼────┐      ┌────▼────┐
 │identifier│      │arguments│
-│  &quot;func&quot;  │ ┌────┴───┬─────┴───┐
+│  "func"  │ ┌────┴───┬─────┴───┐
 └──────────┘ │        │         │
              │        │         │
    ┌─────────▼┐  ┌────▼─────┐  ┌▼─────────┐
    │identifier│  │identifier│  │identifier│
-   │  &quot;arg1&quot;  │  │  &quot;arg2&quot;  │  │  &quot;arg3&quot;  │
+   │  "arg1"  │  │  "arg2"  │  │  "arg3"  │
    └──────────┘  └──────────┘  └──────────┘
 </code></pre>
 <p>Say we have a selection that wraps <code>arg1</code>. The selection is on the <code>arg1</code> leaf
@@ -236,7 +236,7 @@ can see that we would select the <code>arguments</code> node.</p>
 node with no sibling. If we have a selection on <code>arg1</code>, <code>A-p</code> would bring us
 to the previous child node. Since <code>arg1</code> doesn't have a sibling to its left,
 though, we climb the syntax tree and then take the previous selection. So <code>A-p</code>
-will move the selection over to the &quot;func&quot; <code>identifier</code>.</p>
+will move the selection over to the "func" <code>identifier</code>.</p>
 <pre><code>[func](arg1, arg2, arg3)
 </code></pre>
 <h2 id="textobjects"><a class="header" href="#textobjects">Textobjects</a></h2>

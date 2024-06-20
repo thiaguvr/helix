@@ -157,7 +157,7 @@ to disable auto-LSP-formatting in Rust:</p>
 <pre><code class="language-toml"># in &lt;config_dir&gt;/helix/languages.toml
 
 [[language]]
-name = &quot;rust&quot;
+name = "rust"
 auto-format = false
 </code></pre>
 <p>Language configuration may also be overridden local to a project by creating
@@ -168,22 +168,22 @@ configuration.</p>
 <p>Each language is configured by adding a <code>[[language]]</code> section to a
 <code>languages.toml</code> file. For example:</p>
 <pre><code class="language-toml">[[language]]
-name = &quot;mylang&quot;
-scope = &quot;source.mylang&quot;
-injection-regex = &quot;^mylang$&quot;
-file-types = [&quot;mylang&quot;, &quot;myl&quot;]
-comment-token = &quot;#&quot;
-indent = { tab-width = 2, unit = &quot;  &quot; }
-language-server = { command = &quot;mylang-lsp&quot;, args = [&quot;--stdio&quot;] }
-formatter = { command = &quot;mylang-formatter&quot; , args = [&quot;--stdin&quot;] }
+name = "mylang"
+scope = "source.mylang"
+injection-regex = "^mylang$"
+file-types = ["mylang", "myl"]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+language-server = { command = "mylang-lsp", args = ["--stdio"] }
+formatter = { command = "mylang-formatter" , args = ["--stdin"] }
 </code></pre>
 <p>These configuration keys are available:</p>
 <div class="table-wrapper"><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>name</code></td><td>The name of the language</td></tr>
 <tr><td><code>scope</code></td><td>A string like <code>source.js</code> that identifies the language. Currently, we strive to match the scope names used by popular TextMate grammars and by the Linguist library. Usually <code>source.&lt;name&gt;</code> or <code>text.&lt;name&gt;</code> in case of markup languages</td></tr>
 <tr><td><code>injection-regex</code></td><td>regex pattern that will be tested against a language name in order to determine whether this language should be used for a potential <a href="https://tree-sitter.github.io/tree-sitter/syntax-highlighting#language-injection">language injection</a> site.</td></tr>
-<tr><td><code>file-types</code></td><td>The filetypes of the language, for example <code>[&quot;yml&quot;, &quot;yaml&quot;]</code>. Extensions and full file names are supported.</td></tr>
-<tr><td><code>shebangs</code></td><td>The interpreters from the shebang line, for example <code>[&quot;sh&quot;, &quot;bash&quot;]</code></td></tr>
+<tr><td><code>file-types</code></td><td>The filetypes of the language, for example <code>["yml", "yaml"]</code>. Extensions and full file names are supported.</td></tr>
+<tr><td><code>shebangs</code></td><td>The interpreters from the shebang line, for example <code>["sh", "bash"]</code></td></tr>
 <tr><td><code>roots</code></td><td>A set of marker files to look for when trying to find the workspace root. For example <code>Cargo.lock</code>, <code>yarn.lock</code></td></tr>
 <tr><td><code>auto-format</code></td><td>Whether to autoformat this language when saving</td></tr>
 <tr><td><code>diagnostic-severity</code></td><td>Minimal severity of diagnostic for it to be displayed. (Allowed values: <code>Error</code>, <code>Warning</code>, <code>Info</code>, <code>Hint</code>)</td></tr>
@@ -210,17 +210,17 @@ sub-table within <code>config</code> can be used to pass extra formatting option
 <a href="https://github.com/microsoft/language-server-protocol/blob/gh-pages/_specifications/specification-3-16.md#document-formatting-request--leftwards_arrow_with_hook">Document Formatting Requests</a>.
 For example with typescript:</p>
 <pre><code class="language-toml">[[language]]
-name = &quot;typescript&quot;
+name = "typescript"
 auto-format = true
-# pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the &quot;[language].format.&quot; prefix.
-config = { format = { &quot;semicolons&quot; = &quot;insert&quot;, &quot;insertSpaceBeforeFunctionParenthesis&quot; = true } }
+# pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
+config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
 </code></pre>
 <h2 id="tree-sitter-grammar-configuration"><a class="header" href="#tree-sitter-grammar-configuration">Tree-sitter grammar configuration</a></h2>
 <p>The source for a language's tree-sitter grammar is specified in a <code>[[grammar]]</code>
 section in <code>languages.toml</code>. For example:</p>
 <pre><code class="language-toml">[[grammar]]
-name = &quot;mylang&quot;
-source = { git = &quot;https://github.com/example/mylang&quot;, rev = &quot;a250c4582510ff34767ec3b7dcdd3c24e8c8aa68&quot; }
+name = "mylang"
+source = { git = "https://github.com/example/mylang", rev = "a250c4582510ff34767ec3b7dcdd3c24e8c8aa68" }
 </code></pre>
 <p>Grammar configuration takes these keys:</p>
 <div class="table-wrapper"><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody>
@@ -240,9 +240,9 @@ git repository:</p>
 <p>You may use a top-level <code>use-grammars</code> key to control which grammars are
 fetched and built when using <code>hx --grammar fetch</code> and <code>hx --grammar build</code>.</p>
 <pre><code class="language-toml"># Note: this key must come **before** the [[language]] and [[grammar]] sections
-use-grammars = { only = [ &quot;rust&quot;, &quot;c&quot;, &quot;cpp&quot; ] }
+use-grammars = { only = [ "rust", "c", "cpp" ] }
 # or
-use-grammars = { except = [ &quot;yaml&quot;, &quot;json&quot; ] }
+use-grammars = { except = [ "yaml", "json" ] }
 </code></pre>
 <p>When omitted, all grammars are fetched and built.</p>
 
